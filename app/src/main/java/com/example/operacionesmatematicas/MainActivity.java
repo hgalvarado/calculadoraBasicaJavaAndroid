@@ -15,7 +15,6 @@ public class MainActivity extends AppCompatActivity {
     EditText txtNum1, txtNum2;
     Button btnSumar, btnRestar, btnMultiplicar, btnDividir;
     ResultadosOperacion res = new ResultadosOperacion();
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,7 +51,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
     private void operacion(String valor) {
         double result = 0;
         String operacion="";
@@ -83,8 +81,8 @@ public class MainActivity extends AppCompatActivity {
 //            Toast.makeText(getApplicationContext(), "El resultado es: " + result, Toast.LENGTH_LONG).show();
             res.setResultado(result);
             res.setOperacion(operacion);
+            Intent intent = new Intent(getApplicationContext(), ActivityResultado.class);
+            startActivity(intent);
         }
-        Intent intent = new Intent(getApplicationContext(), ActivityResultado.class);
-        startActivity(intent);
     }
 }
