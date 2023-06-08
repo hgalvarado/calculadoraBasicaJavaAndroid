@@ -9,12 +9,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.operacionesmatematicas.modelo.ResultadosOperacion;
 
 public class MainActivity extends AppCompatActivity {
     EditText txtNum1, txtNum2;
     Button btnSumar, btnRestar, btnMultiplicar, btnDividir;
-    ResultadosOperacion res = new ResultadosOperacion();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,25 +28,25 @@ public class MainActivity extends AppCompatActivity {
         btnSumar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                operacion("sumar");
+                operacion("suma");
             }
         });
         btnRestar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                operacion("restar");
+                operacion("resta");
             }
         });
         btnMultiplicar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                operacion("multiplicar");
+                operacion("multiplicacion");
             }
         });
         btnDividir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                operacion("dividir");
+                operacion("division");
             }
         });
     }
@@ -61,27 +60,26 @@ public class MainActivity extends AppCompatActivity {
             double num1 = Double.parseDouble(txtNum1.getText().toString());
             double num2 = Double.parseDouble(txtNum2.getText().toString());
             switch (valor) {
-                case "sumar":
+                case "suma":
                     result = num1 + num2;
                     operacion = valor;
                     break;
-                case "restar":
+                case "resta":
                     result = num1 - num2;
                     operacion = valor;
                     break;
-                case "multiplicar":
+                case "multiplicacion":
                     result = num1 * num2;
                     operacion = valor;
                     break;
-                case "dividir":
+                case "division":
                     result = num1 / num2;
                     operacion = valor;
                     break;
             }
-//            Toast.makeText(getApplicationContext(), "El resultado es: " + result, Toast.LENGTH_LONG).show();
-            res.setResultado(result);
-            res.setOperacion(operacion);
             Intent intent = new Intent(getApplicationContext(), ActivityResultado.class);
+            intent.putExtra("Resultado",result);
+            intent.putExtra("Operacion",valor);
             startActivity(intent);
         }
     }

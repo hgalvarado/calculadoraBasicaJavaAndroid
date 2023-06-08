@@ -4,14 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import com.example.operacionesmatematicas.modelo.ResultadosOperacion;
 
 public class ActivityResultado extends AppCompatActivity {
 
     TextView lblTipoOperacion, lblResultadoOperacion;
-    ResultadosOperacion result = new ResultadosOperacion();
 
 
     @Override
@@ -22,10 +18,11 @@ public class ActivityResultado extends AppCompatActivity {
         lblTipoOperacion = (TextView) findViewById(R.id.lblTipoOperacion);
         lblResultadoOperacion = (TextView) findViewById(R.id.lblMensajeResultado);
 
+        //Obtenemos los valores del Intent
+        double resultado = getIntent().getDoubleExtra("Resultado",0);
+        String operacion = getIntent().getStringExtra("Operacion");
 
-        lblTipoOperacion.setText("La " + result.getOperacion() + " Es: ");
-        lblResultadoOperacion.setText("" + result.getResultado());
-        Toast.makeText(getApplicationContext(),""+ result.getResultado(),Toast.LENGTH_LONG).show();
-
+        lblTipoOperacion.setText("La " + operacion + " Es: ");
+        lblResultadoOperacion.setText("" + resultado);
     }
 }
