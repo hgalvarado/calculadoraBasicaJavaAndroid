@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import com.example.operacionesmatematicas.modulo.ResultadoOperacion;
+
 public class ActivityResultado extends AppCompatActivity {
 
     TextView lblTipoOperacion, lblResultadoOperacion;
@@ -18,11 +20,9 @@ public class ActivityResultado extends AppCompatActivity {
         lblTipoOperacion = (TextView) findViewById(R.id.lblTipoOperacion);
         lblResultadoOperacion = (TextView) findViewById(R.id.lblMensajeResultado);
 
-        //Obtenemos los valores del Intent
-        double resultado = getIntent().getDoubleExtra("Resultado",0);
-        String operacion = getIntent().getStringExtra("Operacion");
+        ResultadoOperacion res = new ResultadoOperacion();
 
-        lblTipoOperacion.setText("La " + operacion + " Es: ");
-        lblResultadoOperacion.setText("" + resultado);
+        lblTipoOperacion.setText("La " + res.getOperacion()  + " Es: ");
+        lblResultadoOperacion.setText("" + res.getResultado());
     }
 }

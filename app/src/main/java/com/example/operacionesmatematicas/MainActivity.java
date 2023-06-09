@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.operacionesmatematicas.modulo.ResultadoOperacion;
+
 
 public class MainActivity extends AppCompatActivity {
     EditText txtNum1, txtNum2;
@@ -77,9 +79,10 @@ public class MainActivity extends AppCompatActivity {
                     operacion = valor;
                     break;
             }
+            ResultadoOperacion res = new ResultadoOperacion();
+            res.setResultado(result);
+            res.setOperacion(operacion);
             Intent intent = new Intent(getApplicationContext(), ActivityResultado.class);
-            intent.putExtra("Resultado",result);
-            intent.putExtra("Operacion",valor);
             startActivity(intent);
         }
     }
